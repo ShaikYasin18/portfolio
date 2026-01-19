@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Global Keyframes */
+@keyframes floating {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+/* Custom Animation Classes */
+.animate-float-slow {
+  animation: floating 6s infinite ease-in-out;
+}
+
+.animate-float-delayed {
+  animation: floating 6s infinite ease-in-out;
+  animation-delay: 3s;
+}
