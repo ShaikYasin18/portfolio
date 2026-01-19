@@ -4,7 +4,7 @@ import {
   ChevronRight, Brain, Code, Database, 
   Terminal, User, Briefcase, GraduationCap, Award,
   ArrowUp, Cpu, Layers, Image as ImageIcon, Zap, Plus, 
-  Verified, MonitorPlay, BookOpen, Download, Phone
+  Verified, MonitorPlay, BookOpen, Phone
 } from 'lucide-react';
 
 const App = () => {
@@ -16,6 +16,7 @@ const App = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [visibleSections, setVisibleSections] = useState({});
 
+  // Magnetic Cursor and Reveal logic
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({
@@ -37,6 +38,7 @@ const App = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleHover);
     
+    // Page load reveal animation
     const timer = setTimeout(() => setIsLoaded(true), 500);
 
     return () => {
@@ -46,6 +48,7 @@ const App = () => {
     };
   }, []);
 
+  // Intersection Observer for scroll animations
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -199,17 +202,21 @@ const App = () => {
   return (
     <div className={`${darkMode ? 'bg-black text-white' : 'bg-[#f5f5f7] text-[#1d1d1f]'} min-h-screen transition-colors duration-700 font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden relative cursor-none`}>
       
+      {/* Custom Magnetic Cursor */}
       <div 
         className={`fixed pointer-events-none z-[10000] rounded-full border border-blue-500 transition-all duration-300 ease-out hidden md:block ${isHovering ? 'w-20 h-20 bg-blue-500/10 mix-blend-difference' : 'w-10 h-10'}`}
         style={{ left: cursorPos.x, top: cursorPos.y, transform: 'translate(-50%, -50%)' }}
       />
 
+      {/* Intro Reveal Screen */}
       <div className={`fixed inset-0 z-[999] bg-black flex items-center justify-center transition-transform duration-1000 ease-in-out ${isLoaded ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="text-4xl font-black tracking-tighter text-white animate-pulse">SY // 2026</div>
       </div>
 
+      {/* Cinematic Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg" />
 
+      {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-700 ${isScrolled ? 'backdrop-blur-md border-b border-white/5 py-5' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto px-10 flex justify-between items-center">
           <div className="text-2xl font-black tracking-tighter uppercase transition-transform hover:scale-105 cursor-pointer">
@@ -226,6 +233,7 @@ const App = () => {
         </div>
       </nav>
 
+      {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center pt-20 overflow-hidden relative">
         <div className={`max-w-7xl mx-auto px-10 relative z-10 w-full text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div className="overflow-hidden mb-6">
@@ -245,22 +253,19 @@ const App = () => {
             {personalInfo.summary}
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+          <div className="flex justify-center items-center">
             <a href="#projects" className="group flex items-center gap-4 text-xs font-black tracking-[0.3em] uppercase">
               Explore Work 
               <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
                 <ChevronRight size={16} />
               </div>
             </a>
-            <button className="group flex items-center gap-4 text-xs font-black tracking-[0.3em] uppercase opacity-40 hover:opacity-100 transition-opacity">
-              Download CV
-              <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
-            </button>
           </div>
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vh] bg-blue-600/5 rounded-full blur-[180px] pointer-events-none" />
       </section>
 
+      {/* About Section */}
       <section id="about" className="py-40 relative border-t border-white/5">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="grid md:grid-cols-2 gap-20 lg:gap-40 items-start">
@@ -292,6 +297,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Experience Section */}
       <section id="experience" className="py-40 bg-white/5 backdrop-blur-3xl">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.experience ? 'opacity-100' : 'opacity-0'}`}>
           <div className="mb-32 flex justify-between items-end">
@@ -331,6 +337,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Projects Section */}
       <section id="projects" className="py-40 relative">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="mb-32 relative h-24 md:h-32 flex items-center justify-center text-center">
@@ -363,6 +370,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Education Section */}
       <section id="education" className="py-40 relative border-t border-white/5 bg-white/[0.02]">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.education ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="flex flex-col md:flex-row items-baseline gap-12 mb-32">
@@ -391,6 +399,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Skills Section */}
       <section id="skills" className="py-40 bg-black">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.skills ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-1 gap-24">
@@ -412,6 +421,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Certifications Section */}
       <section id="certifications" className="py-40 relative border-t border-white/5">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.certifications ? 'opacity-100' : 'opacity-0 translate-y-20'}`}>
           <div className="flex flex-col md:flex-row items-baseline gap-12 mb-24">
@@ -445,6 +455,7 @@ const App = () => {
         </div>
       </section>
 
+      {/* Footer / Contact Section */}
       <footer id="footer" className="py-60 text-center relative overflow-hidden border-t border-white/5">
         <div className="max-w-7xl mx-auto px-10 relative z-10">
           <div className="mb-24">
@@ -541,7 +552,6 @@ const App = () => {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
-        /* Education card floating keyframes */
         @keyframes floating-foundation {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
@@ -553,7 +563,6 @@ const App = () => {
         .animate-float {
           animation: float 6s infinite ease-in-out;
         }
-        /* Floating animations for education cards */
         .animate-float-slow {
           animation: floating-foundation 6s infinite ease-in-out;
         }
