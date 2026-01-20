@@ -77,7 +77,7 @@ const App = () => {
     name: "Shaik Mahammad Yasin",
     first: "Shaik Mahammad",
     last: "Yasin",
-    title: "Software Engineer @ Cognizant",
+    title: "",
     tagline: "🚀 Exploring the Future of AI | 🤖 Generative AI | 📊 Machine Learning | 🛡️ Deep Learning",
     email: "shaikmahammadyasin11@gmail.com",
     phone: "+91 7981937681",
