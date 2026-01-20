@@ -4,7 +4,7 @@ import {
   ChevronRight, Brain, Code, Database, 
   Terminal, User, Briefcase, GraduationCap, Award,
   ArrowUp, Cpu, Layers, Image as ImageIcon, Zap, Plus, 
-  Verified, MonitorPlay, BookOpen, Phone
+  Verified, MonitorPlay, BookOpen, Download, Phone
 } from 'lucide-react';
 
 const App = () => {
@@ -16,7 +16,6 @@ const App = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [visibleSections, setVisibleSections] = useState({});
 
-  // Magnetic Cursor and Reveal logic
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({
@@ -38,7 +37,6 @@ const App = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleHover);
     
-    // Page load reveal animation
     const timer = setTimeout(() => setIsLoaded(true), 500);
 
     return () => {
@@ -48,7 +46,6 @@ const App = () => {
     };
   }, []);
 
-  // Intersection Observer for scroll animations
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -80,27 +77,27 @@ const App = () => {
     name: "Shaik Mahammad Yasin",
     first: "Shaik Mahammad",
     last: "Yasin",
-    title: "Data Scientist",
-    specialization: "LLMs • RAG • RLHF",
+    title: "Software Engineer @ Cognizant",
+    tagline: "🚀 Exploring the Future of AI | 🤖 Generative AI | 📊 Machine Learning | 🛡️ Deep Learning",
     email: "shaikmahammadyasin11@gmail.com",
     phone: "+91 7981937681",
     linkedin: "https://www.linkedin.com/in/mahammad-yasin-shaik-8427ba201/",
     github: "https://github.com/ShaikYasin18?tab=repositories",
     medium: "https://medium.com/@shaikmahammadyasin11",
-    summary: "Data Scientist specializing in LLMs, Retrieval-Augmented Generation (RAG), and Reinforcement Learning from Human Feedback (RLHF). I deliver production ML solutions that drive measurable gains in productivity and accuracy, with extensive experience in Python, Google Cloud Platform, and prompt engineering."
+    summary: "Software Engineer at Cognizant specialized in Generative AI, Machine Learning, and Deep Learning. As an innovation-driven thinker, I architect production-ready AI solutions that scale. My expertise spans building RAG pipelines, fine-tuning LLMs, and developing high-precision neural architectures on Google Cloud Platform."
   };
 
   const experiences = [
     {
       company: "Cognizant",
-      role: "Data Scientist",
+      role: "Software Engineer (Data Science Focus)",
       location: "Bengaluru",
       period: "2023 — Present",
       achievements: [
-        "Streamlined manual processes for Google Play Protect using production ML pipelines.",
+        "Engineering high-performance ML pipelines for Google Play Protect services.",
         "Architected a RAG-based LLM assistant achieving a ~5% uplift in agent productivity.",
-        "Raised decision reliability by ~5% through high-precision CNN-driven classification models.",
-        "Released cloud-hosted ML services on Google Cloud Platform (GCP)."
+        "Developed neural classification models resulting in ~5% higher decision reliability.",
+        "Released production ML services on Google Cloud Platform (GCP)."
       ],
       tech: ["Python", "TensorFlow", "LangChain", "GCP", "Vector DBs"]
     },
@@ -110,7 +107,7 @@ const App = () => {
       location: "Freelance",
       period: "2025 — Present",
       achievements: [
-        "Provided human-in-the-loop feedback for LLMs through RLHF frameworks.",
+        "Reinforcing LLM reasoning through human-in-the-loop (RLHF) frameworks.",
         "Validated tool-augmented reasoning and API selection accuracy.",
         "Strengthened training signals for reward modeling through detailed output analysis."
       ],
@@ -122,9 +119,9 @@ const App = () => {
       location: "Bengaluru",
       period: "Feb 2022 — Aug 2022",
       achievements: [
-        "Developed and maintained scalable web applications using Java and Spring Boot architectures.",
-        "Integrated front-end components with RESTful APIs to deliver seamless user experiences.",
-        "Collaborated on unit testing and debugging to ensure high code quality and system stability."
+        "Built scalable web applications using Java and Spring Boot architectures.",
+        "Integrated front-end components with RESTful APIs for seamless data flow.",
+        "Engineered robust unit testing suites to maintain 95%+ code coverage."
       ],
       tech: ["Java", "Spring Boot", "REST API", "SQL", "JavaScript"]
     }
@@ -134,25 +131,25 @@ const App = () => {
     {
       id: "01",
       title: "CIFAR-10 Classifier",
-      description: "Deep learning vision systems powered by high-precision CNN architectures.",
+      description: "Advanced vision systems utilizing high-precision CNN architectures for image intelligence.",
       tags: ["TensorFlow", "Keras", "OpenCV"],
     },
     {
       id: "02",
       title: "DeepSeek AI Suite",
-      description: "Local LLM ecosystem featuring RAG-powered query systems and coding assistance.",
+      description: "Local LLM ecosystem featuring RAG-powered query systems and automated coding assistance.",
       tags: ["LangChain", "FAISS", "Ollama"],
     },
     {
       id: "03",
       title: "ChurnGuard",
-      description: "Predictive ANN-based customer churn forecasting with real-time tracking.",
+      description: "Predictive ANN-based customer churn forecasting with real-time tracking dashboards.",
       tags: ["TensorFlow", "Plotly", "Streamlit"],
     },
     {
       id: "04",
       title: "Tennis Predictor",
-      description: "Classification tool utilizing automated preprocessing and Bayes theory.",
+      description: "Statistical classification tool utilizing automated preprocessing and Bayesian theory.",
       tags: ["Python", "Streamlit", "Pandas"],
     }
   ];
@@ -202,21 +199,17 @@ const App = () => {
   return (
     <div className={`${darkMode ? 'bg-black text-white' : 'bg-[#f5f5f7] text-[#1d1d1f]'} min-h-screen transition-colors duration-700 font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden relative cursor-none`}>
       
-      {/* Custom Magnetic Cursor */}
       <div 
         className={`fixed pointer-events-none z-[10000] rounded-full border border-blue-500 transition-all duration-300 ease-out hidden md:block ${isHovering ? 'w-20 h-20 bg-blue-500/10 mix-blend-difference' : 'w-10 h-10'}`}
         style={{ left: cursorPos.x, top: cursorPos.y, transform: 'translate(-50%, -50%)' }}
       />
 
-      {/* Intro Reveal Screen */}
       <div className={`fixed inset-0 z-[999] bg-black flex items-center justify-center transition-transform duration-1000 ease-in-out ${isLoaded ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="text-4xl font-black tracking-tighter text-white animate-pulse">SY // 2026</div>
       </div>
 
-      {/* Cinematic Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg" />
 
-      {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-700 ${isScrolled ? 'backdrop-blur-md border-b border-white/5 py-5' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto px-10 flex justify-between items-center">
           <div className="text-2xl font-black tracking-tighter uppercase transition-transform hover:scale-105 cursor-pointer">
@@ -233,14 +226,15 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center pt-20 overflow-hidden relative">
         <div className={`max-w-7xl mx-auto px-10 relative z-10 w-full text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div className="overflow-hidden mb-6">
-            <span className="block text-blue-500 font-mono text-xs tracking-[0.5em] uppercase animate-slide-up">Data Science & Machine Learning</span>
+            <span className="block text-blue-500 font-mono text-xs tracking-[0.5em] uppercase animate-slide-up">
+              {personalInfo.title}
+            </span>
           </div>
           
-          <h1 className="text-[12vw] md:text-[9vw] font-black leading-[0.85] tracking-tighter mb-12 uppercase italic relative">
+          <h1 className="text-[12vw] md:text-[9vw] font-black leading-[0.85] tracking-tighter mb-8 uppercase italic relative">
             <div className="overflow-hidden">
               <span className="block animate-reveal-curtain">{personalInfo.first}</span>
             </div>
@@ -249,8 +243,13 @@ const App = () => {
             </div>
           </h1>
 
-          <div className="max-w-2xl mx-auto opacity-60 text-lg md:text-xl font-light leading-relaxed mb-16">
-            {personalInfo.summary}
+          <div className="max-w-3xl mx-auto mb-16 px-4">
+             <div className="inline-block px-6 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase mb-8">
+               {personalInfo.tagline}
+             </div>
+             <p className="opacity-60 text-lg md:text-xl font-light leading-relaxed">
+               {personalInfo.summary}
+             </p>
           </div>
 
           <div className="flex justify-center items-center">
@@ -265,23 +264,22 @@ const App = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vh] bg-blue-600/5 rounded-full blur-[180px] pointer-events-none" />
       </section>
 
-      {/* About Section */}
       <section id="about" className="py-40 relative border-t border-white/5">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="grid md:grid-cols-2 gap-20 lg:gap-40 items-start">
             <div className="max-w-full">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase italic leading-[0.9] tracking-tighter">
-                Architecture <br /> <span className="opacity-30">of Intelligence</span>
+                Innovation <br /> <span className="opacity-30">Driven Thinking</span>
               </h2>
             </div>
             <div className="space-y-12">
               <p className="text-xl md:text-2xl font-light opacity-60 leading-relaxed">
-                Specializing in production-grade AI systems. From RAG pipelines to fine-tuning LLMs with RLHF, my work focuses on efficiency, accuracy, and enterprise scalability.
+                As a Software Engineer at Cognizant, I bridge the gap between complex AI research and scalable production systems. My focus is on GenAI, Deep Learning, and building infrastructures of the future.
               </p>
               <div className="grid grid-cols-3 gap-8 pt-12">
                 <div>
                   <div className="text-2xl md:text-4xl font-black mb-2 tracking-tighter">~20%</div>
-                  <div className="text-[9px] font-bold tracking-widest uppercase opacity-40">Optimization</div>
+                  <div className="text-[9px] font-bold tracking-widest uppercase opacity-40">Efficiency</div>
                 </div>
                 <div>
                   <div className="text-2xl md:text-4xl font-black mb-2 tracking-tighter">95%+</div>
@@ -289,7 +287,7 @@ const App = () => {
                 </div>
                 <div>
                   <div className="text-2xl md:text-4xl font-black mb-2 tracking-tighter">GCP</div>
-                  <div className="text-[9px] font-bold tracking-widest uppercase opacity-40">Cloud Deploy</div>
+                  <div className="text-[9px] font-bold tracking-widest uppercase opacity-40">Production</div>
                 </div>
               </div>
             </div>
@@ -297,11 +295,10 @@ const App = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
       <section id="experience" className="py-40 bg-white/5 backdrop-blur-3xl">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.experience ? 'opacity-100' : 'opacity-0'}`}>
           <div className="mb-32 flex justify-between items-end">
-            <h2 className="text-sm font-black tracking-[0.5em] uppercase opacity-40 italic">Career trajectory</h2>
+            <h2 className="text-sm font-black tracking-[0.5em] uppercase opacity-40 italic">Engineering Roadmap</h2>
             <div className="h-[1px] bg-white/10 flex-1 mx-12 hidden md:block" />
             <div className="text-xs font-mono opacity-40">2022 // 2026</div>
           </div>
@@ -337,13 +334,12 @@ const App = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section id="projects" className="py-40 relative">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="mb-32 relative h-24 md:h-32 flex items-center justify-center text-center">
             <h2 className="text-[10vw] font-black tracking-tighter leading-none opacity-5 uppercase italic select-none absolute w-full pointer-events-none">Case Studies</h2>
             <div className="text-center relative z-10">
-              <span className="text-[10px] font-black tracking-[0.6em] uppercase opacity-40">Selected Projects</span>
+              <span className="text-[10px] font-black tracking-[0.6em] uppercase opacity-40">AI Architectures</span>
             </div>
           </div>
 
@@ -370,7 +366,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Education Section */}
       <section id="education" className="py-40 relative border-t border-white/5 bg-white/[0.02]">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.education ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div className="flex flex-col md:flex-row items-baseline gap-12 mb-32">
@@ -399,7 +394,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
       <section id="skills" className="py-40 bg-black">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.skills ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-1 gap-24">
@@ -421,7 +415,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section id="certifications" className="py-40 relative border-t border-white/5">
         <div className={`max-w-7xl mx-auto px-10 transition-all duration-1000 ${visibleSections.certifications ? 'opacity-100' : 'opacity-0 translate-y-20'}`}>
           <div className="flex flex-col md:flex-row items-baseline gap-12 mb-24">
@@ -455,11 +448,10 @@ const App = () => {
         </div>
       </section>
 
-      {/* Footer / Contact Section */}
       <footer id="footer" className="py-60 text-center relative overflow-hidden border-t border-white/5">
         <div className="max-w-7xl mx-auto px-10 relative z-10">
           <div className="mb-24">
-            <span className="text-[10px] font-black tracking-[0.5em] uppercase opacity-40 block mb-12">Contact</span>
+            <span className="text-[10px] font-black tracking-[0.5em] uppercase opacity-40 block mb-12">Connect</span>
             <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-12 italic leading-[0.8] hover:scale-105 transition-transform duration-700 cursor-pointer">
               Let's build <br /> <span className="text-blue-500 underline decoration-blue-500/30 decoration-8 underline-offset-8">The Future.</span>
             </h2>
@@ -495,9 +487,9 @@ const App = () => {
                 <Github size={28} className="text-blue-500 group-hover:text-white group-hover:scale-125 transition-all duration-500" />
               </div>
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Open Source</span>
+                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Repositories</span>
                 <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 cursor-pointer">
-                  Repositories <ExternalLink size={12} />
+                  GitHub <ExternalLink size={12} />
                 </a>
               </div>
             </div>
@@ -507,9 +499,9 @@ const App = () => {
                 <Linkedin size={28} className="text-blue-500 group-hover:text-[#0077b5] group-hover:scale-125 transition-all duration-500" />
               </div>
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">{personalInfo.name}</span>
+                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Networking</span>
                 <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 cursor-pointer">
-                  LinkedIn Profile <ChevronRight size={12} />
+                  LinkedIn <ChevronRight size={12} />
                 </a>
               </div>
             </div>
@@ -519,9 +511,9 @@ const App = () => {
                 <BookOpen size={28} className="text-blue-500 group-hover:text-emerald-500 group-hover:scale-125 transition-all duration-500" />
               </div>
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Medium</span>
+                <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity">Articles</span>
                 <a href={personalInfo.medium} target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-white/10 rounded-full text-[10px] font-black tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 cursor-pointer">
-                  Articles <ExternalLink size={12} />
+                  Medium <ExternalLink size={12} />
                 </a>
               </div>
             </div>
